@@ -6,6 +6,10 @@ from src.end_to_end_ds.entity.config_entity import ModelTrainerConfig
 import pandas as pd
 from sklearn.linear_model import ElasticNet
 import joblib
+import dagshub
+from dotenv import load_dotenv
+
+
 
 class ModelTrainer:
     def __init__(self, config: ModelTrainerConfig):

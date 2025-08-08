@@ -32,6 +32,11 @@ run-data-transformation: # Run the Data Transformation Step in the pipeline
 	source venv/bin/activate && \
 	python3 -m src.end_to_end_ds.pipeline.data_transformation
 
-run-model-training: # Run the model training setp in the pipeline 
+run-model-training: # Run the model training step in the pipeline 
 	source venv/bin/activate && \
 	python3 -m src.end_to_end_ds.pipeline.model_trainer
+
+run-model-evaluation: # Run the model Evaluation Step in the pipeline  
+	source venv/bin/activate && \
+	python3 -m src.end_to_end_ds.pipeline.model_evaluation
+
