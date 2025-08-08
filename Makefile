@@ -24,3 +24,10 @@ run-data-ingestion: # Run the Data Ingestion Step in the pipeline
 	source venv/bin/activate && \
 	python3 -m src.end_to_end_ds.pipeline.data_ingestion
 
+run-data-validation: # Run the Data Validation Step in the pipeline 
+	source venv/bin/activate && \
+	python3 -m src.end_to_end_ds.pipeline.data_validation
+
+run-data-transformation: # Run the Data Transformation Step in the pipeline
+	source venv/bin/activate && \
+	python3 -m src.end_to_end_ds.pipeline.data_transformation
