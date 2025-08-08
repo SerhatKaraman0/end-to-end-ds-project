@@ -1,4 +1,4 @@
-.PHONY: help clean setup
+.PHONY: help clean setup install run-data-ingestion
 
 help: 
 	@echo "Available commands"
@@ -16,3 +16,11 @@ setup: clean  # Set up project environment and install dependencies
 	pip3 install --upgrade pip && \
 	pip3 install -r requirements.txt && \
 	python3 template.py 
+
+install: # Install project dependencies 
+	pip3 install -r requirements.txt
+
+run-data-ingestion: # Run the Data Ingestion Step in the pipeline 
+	source venv/bin/activate && \
+	python3 -m src.end_to_end_ds.pipeline.data_ingestion
+
