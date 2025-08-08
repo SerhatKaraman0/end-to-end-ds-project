@@ -1,0 +1,147 @@
+# Ignore Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+images/
+logs/
+
+*.cpython
+.DS_Store
+*.mov
+*.mp4
+*.avi
+data/videos/*.mov
+data/videos/*.mp4
+data/videos/*.avi
+
+# Ignore build and generated files
+firebase_auth/
+venv/
+dist/
+build/
+.esbuild/
+.out/
+.cache/
+.vite/
+*.log
+*.tsbuildinfo
+bag_of_words/
+notebook/
+
+# Environment and secrets
+.env
+
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.pytest_cache
+
+# IDE and editor-specific files
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Logs and debugging files
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage reports
+coverage/
+.nyc_output/
+*.lcov
+
+# Git-specific files
+*.orig
+*.rej
+*.patch
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.log
+*.tgz
+
+# TypeScript
+
+*.tsbuildinfo
+
+# React specific
+.env.development.local
+.env.production.local
+.env.test.local
+
+# MacOS-specific
+.AppleDouble
+.LSOverride
+
+# Specific tooling
+*.cache/
+*.config.js
+.history/
+
+# Python-specific
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyo
+*.pyt
+.Python
+.envrc
+
+# Go-specific
+bin/
+vendor/
+
+# Miscellaneous
+*.lock
+!dvc.lock
+*.sqlite3
+*.exe
+*.dll
+*.so
+*.dylib
+*.out
+*.pyc
+*.pyo
+
+# Temporary or backup files
+*.swp
+*~
+*.tmp
+*.bak
+
+stats/
+data/PREPROCESSED_Reviews.csv
+data/tokenized_data.csv
+data/bag_of_words/bag_of_words.parquet.gz
+data/tfidf_scores.csv
+data/embeddings/glove.6B.50d.txt
+data/embeddings/glove.6B.100d.txt
+data/embeddings/glove.6B.200d.txt
+data/embeddings/glove.6B.300d.txt
+data/embeddings/glove.6B.zip
+data/best_model_simple.h5
+
+venv/
+mlruns/
+mlartifacts/
+.dvc/
+.dvcignore
+bucket-policy.json
+simple-s3-policy.json
+
