@@ -1,0 +1,13 @@
+:root{
+  --bg-1:#0f172a; --bg-2:#111827; --bd:#1f2937; --fg:#e5e7eb; --muted:#9ca3af;
+  --primary:#6366f1; --primary-100:#a5b4fc;
+}
+html,body{height:100%}
+body{background:linear-gradient(135deg,var(--bg-1) 0%,var(--bg-2) 100%);color:var(--fg)}
+.app-navbar{background:rgba(17,24,39,.8)!important;backdrop-filter: blur(6px)}
+.card{background:var(--bg-2);border:1px solid var(--bd);color:var(--fg)}
+.btn-primary{background:var(--primary);border-color:var(--primary)}
+.btn-outline-primary{color:var(--primary-100);border-color:var(--primary)}
+.app-footer{border-top:1px solid var(--bd);background:rgba(17,24,39,.6)}
+.list-group-item{border-color:var(--bd)}
+

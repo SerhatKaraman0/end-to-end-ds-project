@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Wine Quality - ML Pipeline{% endblock %}
+
+{% block content %}
+  <section class="mb-4 p-4 p-md-5 rounded-3 text-white" style="background:linear-gradient(135deg,#1e293b 0%, #0ea5e9 100%);">
+    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+      <div>
+        <h2 class="mb-1">End-to-End Wine Quality Pipeline</h2>
+        <p class="mb-0 opacity-75">Ingest, validate, transform, train, and evaluate — all from this UI. View metrics and run predictions interactively.</p>
+      </div>
+      <div class="d-flex gap-2">
+        <form method="post" action="/run/all">
+          <button class="btn btn-light"><i class="bi bi-rocket"></i> Run All</button>
+        </form>
+        <a class="btn btn-outline-light" href="/predict"><i class="bi bi-magic"></i> Predict</a>
+      </div>
+    </div>
+  </section>
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card p-4 h-100">
+        <h5 class="mb-3">Pipeline Controls</h5>
+        <div class="mb-3 small text-muted">Click a node to run that stage, or use the button to run the entire pipeline.</div>
+        <div class="mermaid">
+%%{init: {'flowchart': {'curve': 'basis', 'nodeSpacing': 70, 'rankSpacing': 90}, 'themeVariables': {'lineColor': '#64748b', 'fontFamily': 'Inter, ui-sans-serif, system-ui'}} }%%
+flowchart LR
+  classDef stage fill:#0ea5e9,stroke:#0284c7,color:#0b1020,stroke-width:1px,rx:10,ry:10;
+
+  A["📥 Data Ingestion"]:::stage --> B["🧪 Data Validation"]:::stage
+  B --> C["🧬 Data Transformation"]:::stage
+  C --> D["🔧 Model Training"]:::stage
+  D --> E["📊 Model Evaluation"]:::stage
+
+  linkStyle default stroke:#64748b,stroke-width:2px;
+
+  click A call runStage("data_ingestion") "Run data ingestion"
+  click B call runStage("data_validation") "Run data validation"
+  click C call runStage("data_transformation") "Run data transformation"
+  click D call runStage("model_training") "Run model training"
+  click E call runStage("model_evaluation") "Run model evaluation"
+        </div>
+        <div class="mt-3">
+          <form method="post" action="/run/all">
+            <button class="btn btn-primary"><i class="bi bi-rocket"></i> Run All Stages</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card p-4 h-100">
+        <h5 class="mb-3">Latest Metrics</h5>
+        {% if metrics and metrics|length %}
+          <ul class="list-group list-group-flush">
+            {% for k, v in metrics.items() %}
+              <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent text-white border-secondary">
+                <span class="text-capitalize">{{k.replace('_',' ')}}</span>
+                <span class="badge bg-primary rounded-pill">{{ '%.4f'|format(v) }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-muted">No metrics yet. Run the pipeline to generate metrics.</p>
+        {% endif %}
+
+        {% if mlflow_uri %}
+          <hr/>
+          <a class="btn btn-outline-primary w-100" href="{{ mlflow_uri }}" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Open MLflow</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

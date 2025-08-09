@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Metrics - Wine Quality{% endblock %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Model Metrics</h4>
+    <a href="/" class="btn btn-secondary">Back</a>
+  </div>
+  <div class="card p-4">
+    {% if metrics and metrics|length %}
+      <div class="row g-3">
+        {% for k, v in metrics.items() %}
+          <div class="col-12 col-md-4">
+            <div class="p-3 border rounded-2 h-100">
+              <div class="text-muted text-uppercase small">{{k.replace('_',' ')}}</div>
+              <div class="display-6">{{ '%.4f'|format(v) }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-muted">No metrics found. Run model evaluation first.</p>
+    {% endif %}
+  </div>
+{% endblock %}
+
+

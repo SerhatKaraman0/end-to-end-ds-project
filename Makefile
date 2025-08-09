@@ -1,4 +1,6 @@
-.PHONY: help clean setup install run-data-ingestion
+PORT ?= 5050
+
+.PHONY: help clean setup install run-data-ingestion run-ui
 
 help: 
 	@echo "Available commands"
@@ -39,4 +41,8 @@ run-model-training: # Run the model training step in the pipeline
 run-model-evaluation: # Run the model Evaluation Step in the pipeline  
 	source venv/bin/activate && \
 	python3 -m src.end_to_end_ds.pipeline.model_evaluation
+
+run-ui: # Run the Flask web UI
+	source venv/bin/activate && \
+	PORT=$(PORT) python3 main.py | cat
 
